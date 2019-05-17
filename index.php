@@ -1,3 +1,17 @@
+<?php if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+	$sickburn = $_POST['sickburn'];
+
+	if (!preg_match('/^[A-Za-z0-9 ]+$/', $sickburn)) { 
+		?>
+		INVALID
+		<?php
+		exit();
+	}
+}
+?>
+
+
+
 <html>
 	<head>
 		<title>Roast Jason!</title>
@@ -45,6 +59,17 @@
 				/>
 				<input type="submit" value="Send That Roast!" />	
 			</form>
+<?php
+
+				$lines = file('results.html');
+// Loop through our array, show HTML source as HTML source; and line numbers too. 
+//foreach ($lines as $line_num => $line) {  
+//     	echo "Line #<b>{$line_num}</b> : " . htmlspecialchars($line) . "<br />
+
+?>
+	<p>Currently looks like we have <?= count($lines); ?> roasts</p>
+
+
 		</div>
 	</body>
 </html>
